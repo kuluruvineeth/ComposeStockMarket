@@ -10,8 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.kuluruvineeth.composestockmarket.presentation.NavGraphs
 import com.kuluruvineeth.composestockmarket.ui.theme.ComposeStockMarketTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.spec.NavGraphSpec
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,22 +27,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    DestinationsNavHost(NavGraphs.root)
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ComposeStockMarketTheme {
-        Greeting("Android")
-    }
-}
